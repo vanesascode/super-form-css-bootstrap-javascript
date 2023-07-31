@@ -1,6 +1,8 @@
 # Super Form with all input types!
 
-In this educational enrollement form I've tried to include all types of inputs, elements and attributes there are for forms.
+In this educational enrollement form I'm trying to include all types of inputs, elements and attributes there are for forms.
+
+Have a look at its [PROGRESS](https://vanesascode.github.io/super-form-css-bootstrap-javascript/)
 
 Have a look at its [PROGRESS](https://vanesascode.github.io/super-form-css-bootstrap-javascript/)
 
@@ -10,8 +12,11 @@ I've been following the guide of [w3schools.com](https://www.w3schools.com/html/
 
 ## Bootstrap forms:
 
+underconstruction
+
 ## Javascript:
 
+<<<<<<< HEAD
 🔹 When we want the user to write comments if they choose a specific radio or checkbox we can take the elements from the DOM and program them: 
 
 ```
@@ -61,3 +66,6 @@ form.addEventListener("submit", (event) => {
 Then, the  `some  method` is called on the array to check if at least one checkbox is checked. The  some  method takes a callback function as an argument, which checks if the  checked  property of each checkbox is true. The result is assigned to the  isChecked  constant. 
 
 5. If  isChecked  is false, it means no checkbox is checked. In this case, the code prevents the form from being submitted by calling the  `preventDefault  method` on the  event  object. It also displays an alert message with the text "Please choose at least one language."
+=======
+underconstruction
+>>>>>>> 0e73d55ce40c822d93b69b90a4fc3550cf81247f
