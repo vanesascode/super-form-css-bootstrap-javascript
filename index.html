@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="pt-5" style="font-family: 'Roboto', sans-serif">
+    <!--navbar-->
+    <nav class="navbar bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" style="font-family: 'Roboto Mono', monospace">
+          <img
+            src="computer.png"
+            alt="Logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top me-2"
+          />Developers School</a
+        >
+        <!--google search bar-->
+        <div class="d-none d-sm-block">
+          <form
+            class="d-flex"
+            action="https://www.google.com/search"
+            method="get"
+            id="student-form"
+            target="_blank"
+            role="search"
+          >
+            <input
+              type="search"
+              id="gsearch"
+              name="q"
+              class="form-control me-2"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-dark" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!--title-->
+    <div
+      class="text-center container-fluid py-5 px-5"
+      style="
+        background: linear-gradient(
+          0deg,
+          rgba(9, 9, 121, 1) 0%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      "
+    >
+      <h1
+        class="display-5"
+        style="font-family: 'Roboto Mono', monospace; color: black"
+      >
+        &#8249; Apply to
+        <span style="color: white">Developers School</span>
+        &#8250;
+      </h1>
+    </div>
+    <div class="container bg-white">
+      <!--enrollment form-->
+      <form
+        action="https://formsubmit.co/your@email.com"
+        method="POST"
+        autocomplete="on"
+        target="_blank"
+      >
+        <!--basic info-->
+        <!--1ST ROW-->
+        <div class="row my-sm-3">
+          <div class="col-12 col-sm-4 my-3">
+            <label for="name" class="form-label">Name:</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              title="Please enter your name"
+              autofocus
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 col-sm-4 my-3">
+            <label for="surname" class="form-label">Surname:</label>
+            <input
+              type="text"
+              name="surname"
+              required
+              title="Please enter your surname"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 col-sm-4 my-3">
+            <label for="telephone" class="form-label">Telephone number:</label>
+            <input
+              class="form-control"
+              type="tel"
+              id="telephone"
+              name="telephone"
+              pattern="[0-9]+"
+              title="Please enter numbers only"
+              oninvalid="this.setCustomValidity('Please enter numbers only')"
+              required
+            />
+          </div>
+        </div>
+        <!--2ND ROW-->
+        <div class="row my-sm-3">
+          <div class="col-12 col-sm-4 my-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              name="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              oninvalid="this.setCustomValidity('Please enter a valid email address')"
+              title="Please enter a valid email address"
+              required
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 col-sm-4 my-3">
+            <label for="password" class="form-label"
+              >Create a password (minimum 8 characters):</label
+            >
+            <input
+              type="password"
+              id="password"
+              name="password"
+              minlength="8"
+              size="8"
+              oninvalid="this.setCustomValidity('Please enter at least 8 characters')"
+              title="Please enter at least 8 characters"
+              required
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 col-sm-4 my-3">
+            <label for="passwordconfirmation" class="form-label">
+              Confirm password:</label
+            >
+            <input
+              type="password"
+              id="passwordconfirmation"
+              name="passwordconfirmation"
+              minlength="8"
+              oninvalid="this.setCustomValidity('Please repeat the same password')"
+              title="Please repeat the same password"
+              size="8"
+              required
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <!--read only example-->
+        <label for="subscribe"
+          >We're sure you want to become a developer, right?</label
+        >
+        <input
+          type="text"
+          name="subscribe"
+          value="Yes"
+          readonly
+          id="subscribe"
+        />
+        <!--radio example-->
+        <p>How did you learn about us?</p>
+        <div>
+          <input type="radio" name="learnaboutus" id="google" />
+          <label for="google">Google</label>
+        </div>
+        <div>
+          <input type="radio" name="learnaboutus" id="socialmedia" />
+          <label for="socialmedia">Social media</label>
+        </div>
+        <div>
+          <input type="radio" name="learnaboutus" id="friends" />
+          <label for="friends">Friends</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="learnaboutus"
+            id="other"
+            onclick="toggleOtherInput()"
+          />
+          <label for="other">Other</label>
+          <input
+            type="text"
+            name="telluslearnaboutus"
+            id="tellus"
+            placeholder="Tell us how you learned about us"
+            style="display: none"
+          />
+        </div>
+        <!--range example-->
+        <label for="level"
+          >Tell us how much do you think you know about programming in
+          general(between 0 and 100):</label
+        >
+        <input type="range" id="level" name="level" min="0" max="50" />
+        <!--select example-->
+        <label for="classes">How would you like to learn?:</label>
+        <select id="classes" name="classes multiple" required>
+          <option value="">Choose one option</option>
+          <option value="online">Online classes</option>
+          <option value="inpersonclasses">In-person classes</option>
+          <option value="hybrid">Hybrid classes</option>
+        </select>
+        <!--datalist example-->
+        <p>Choose a prefered browser</p>
+        <input list="browsers" name="browser" required />
+        <datalist id="browsers">
+          <option value="Microsoft Edge"></option>
+          <option value="Firefox"></option>
+          <option value="Chrome"></option>
+          <option value="Opera"></option>
+          <option value="Safari"></option>
+        </datalist>
+
+        <!--checkbox example-->
+        <p>Select all the languages you want to learn</p>
+        <div>
+          <input type="checkbox" name="languages" id="javaScript" />
+          <label for="javaScript">JavaScript</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="typescript" />
+          <label for="typescript">Typescript</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="python" />
+          <label for="python">Python</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="html" />
+          <label for="html">HTML</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="css" />
+          <label for="css">CSS</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="java" />
+          <label for="java">Java</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="c++" />
+          <label for="c++">C++</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="c#" />
+          <label for="c#">C#</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="ruby" />
+          <label for="ruby">Ruby</label>
+        </div>
+        <div>
+          <input type="checkbox" name="languages" id="php" />
+          <label for="php">PHP</label>
+        </div>
+        <!--min max attributes in dates-->
+        <p>When would you like to start studying?</p>
+        <label for="datemin">Enter a date after 01-09-2023:</label>
+        <input
+          type="week"
+          id="datemin"
+          name="datemin"
+          min="2023-W35"
+          required
+        />
+        <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
+
+        <!--numerical input-->
+        <p>How many classes would you like to have per week?</p>
+        <label for="quantityclasses">Quantity (between 1 and 5):</label>
+        <input
+          type="number"
+          id="quantityclasses"
+          name="quantityclasses"
+          min="1"
+          max="5"
+          required
+        />
+
+        <!--number steps min max attributes-->
+        <label for="quantity"
+          >Tell us how many hours you think you can spend every week on your
+          studying:</label
+        >
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="0"
+          max="100"
+          step="5"
+          value="15"
+        />
+
+        <!--time input-->
+        <label for="preferedtime"
+          >Tell us what would be the perfect time to start a class:</label
+        >
+        <input type="time" id="preferedtime" name="preferedtime" />
+
+        <!--Datetime-local-->
+
+        <label for="interviewday"
+          >Tell us a day and time you would like to have an interview with us
+          before starting the classes:</label
+        >
+        <input
+          type="datetime-local"
+          id="interviewday"
+          name="interviewday"
+          required
+        />
+        <!--File input-->
+        <label for="file"
+          >Send us some previous programming certificates if you have
+          them:</label
+        >
+        <input type="file" id="file" name="file" />
+
+        <!--URl input-->
+        <label for="website"
+          >Add your website or Linkedin if you have one:</label
+        >
+        <input type="url" id="website" name="website" />
+
+        <!--textarea example-->
+        <label for="comments">Tell us more about you:</label>
+        <textarea
+          placeholder="For example: I'm the kind of person that..."
+          name="comments"
+          id="comments"
+          required
+        ></textarea>
+        <!--color input-->
+        <label for="favcolor">Select your favorite color:</label>
+        <input type="color" id="favcolor" name="favcolor" value="#ff0000" />
+        <!--date input-->
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" />
+        <input type="submit" value="Submit" required />
+        <!--month input-->
+        <label for="famonth">What is your favourite month of the year?</label>
+        <input type="month" id="famonth" name="famonth" />
+        <!--hidden input: in case you want to keep a control of the form-->
+        <input
+          type="hidden"
+          id="from-form-best-course"
+          name="from-form-best-course"
+          value="from-form-best-course"
+        />
+
+        <!--FormSubmit Advanced Features:-->
+        <!--the thanks email the sender receives-->
+        <input
+          type="hidden"
+          name="_autoresponse"
+          value="Thank you for contacting us. We will get back to you as soon as possible."
+        />
+        <!--the style in which I see the email that formsubmit sends me-->
+        <input type="hidden" name="_template" value="table" />
+
+        <!--button-->
+        <button type="submit">Send</button>
+        <!--Another option:  <input type="submit" value="Submit"> -->
+        <input type="reset" />
+      </form>
+    </div>
+
+    <script>
+      // Tell us how you learnt about us:
+      function toggleOtherInput() {
+        const otherCheckbox = document.getElementById("other");
+        const otherInput = document.getElementById("tellus");
+
+        if (otherCheckbox.checked) {
+          otherInput.style.display = "block";
+          otherInput.required = true;
+        } else {
+          otherInput.style.display = "none";
+          otherInput.required = false;
+        }
+      }
+
+      //Choose at least one language you want to learn:
+
+      const form = document.querySelectorById("student-form");
+
+      form.addEventListener("submit", (event) => {
+        const checkboxes = document.querySelectorAll(
+          'input[type="checkbox"][name="languages"]'
+        );
+
+        // Check if at least one checkbox is checked
+        const isChecked = Array.from(checkboxes).some(
+          (checkbox) => checkbox.checked
+        );
+
+        // If no checkbox is checked, prevent form submission and display an error message
+        if (!isChecked) {
+          event.preventDefault(); // Prevent form submission
+          alert("Please choose at least one language.");
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!--
+  
+1. NAME Attribute: The "name" attribute is used to identify form input elements when submitting data to a server. It is essential for form processing on the server side. Each input element within a form should have a unique "name" attribute. When a form is submitted, the data entered in the input fields is sent to the server using the "name" attribute as the identifier. 
+ 
+2. ID Attribute: The "id" attribute is used to uniquely identify an HTML element within a document. It serves as a unique identifier for the element, allowing it to be targeted and manipulated using CSS or JavaScript. Unlike the "name" attribute, the "id" attribute is not specifically related to form submission or server-side processing. 
+
+3. The VALUE attribute in HTML is used to specify the initial value or default value of an input element. It is the text or data that is pre-filled or displayed in the input field when the page loads. 
+
+4.The SIZE attribute in the HTML input element specifies the visible width of the input field in terms of the number of characters that can be displayed. It does not determine the maximum length of the input; it only affects the visual presentation. The value of the "size" attribute represents the number of characters that can be displayed horizontally in the input field. For example, if the size attribute is set to "40", the input field will be able to display 40 characters at a time.
+
+Use the size attribute in select elements to specify the number of visible values:
+
+****the default width of text input fields is 20 characters.
+
+
+The regular expression pattern  [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}  is used to validate email addresses. Here's an explanation of each part of the pattern: 
+-  [a-zA-Z0-9._%+-]+ : This part matches one or more characters that can be letters (a-z, A-Z), digits (0-9), or any of the special characters  . ,  _ ,  % ,  + , or  - . This part matches the local part of the email address before the  @  symbol. 
+-  @ : This part matches the  @  symbol that separates the local part from the domain part of the email address. 
+-  [a-zA-Z0-9.-]+ : This part matches one or more characters that can be letters (a-z, A-Z), digits (0-9), or the special characters  . ,  - . This part matches the domain name of the email address, which can include subdomains separated by  . . 
+-  \. : This part matches a literal  .  character. The backslash  \` is used to escape the  .  character, which has a special meaning in regular expressions. 
+-  [a-zA-Z]{2,} : This part matches two or more characters that can be letters (a-z, A-Z). This part matches the top-level domain (TLD) of the email address, such as  .com ,  .org , or  .edu . 
+-->
