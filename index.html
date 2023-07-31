@@ -60,6 +60,7 @@
         </div>
       </div>
     </nav>
+
     <!--title-->
     <div
       class="text-center container-fluid py-5 px-5"
@@ -80,8 +81,9 @@
         &#8250;
       </h1>
     </div>
+
+    <!--enrollment form-->
     <div class="container bg-white">
-      <!--enrollment form-->
       <form
         action="https://formsubmit.co/your@email.com"
         method="POST"
@@ -101,6 +103,10 @@
               title="Please enter your name"
               autofocus
               class="form-control"
+              pattern="[a-zA-Z]+"
+              oninvalid="this.setCustomValidity('Please enter only letters.')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'surname')"
             />
           </div>
           <div class="col-12 col-sm-4 my-3">
@@ -111,18 +117,24 @@
               required
               title="Please enter your surname"
               class="form-control"
+              pattern="[a-zA-Z]+"
+              oninvalid="this.setCustomValidity('Please enter only letters.')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'telephone')"
             />
           </div>
           <div class="col-12 col-sm-4 my-3">
             <label for="telephone" class="form-label">Telephone number:</label>
             <input
-              class="form-control"
               type="tel"
+              class="form-control"
               id="telephone"
               name="telephone"
               pattern="[0-9]+"
               title="Please enter numbers only"
               oninvalid="this.setCustomValidity('Please enter numbers only')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'email')"
               required
             />
           </div>
@@ -132,11 +144,13 @@
           <div class="col-12 col-sm-4 my-3">
             <label for="email" class="form-label">Email:</label>
             <input
+              id="email"
               type="email"
               name="email"
-              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-              oninvalid="this.setCustomValidity('Please enter a valid email address')"
               title="Please enter a valid email address"
+              oninvalid="this.setCustomValidity('Please enter a valid email address')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'email')"
               required
               class="form-control"
             />
@@ -152,6 +166,8 @@
               minlength="8"
               size="8"
               oninvalid="this.setCustomValidity('Please enter at least 8 characters')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'passwordconfirmation')"
               title="Please enter at least 8 characters"
               required
               class="form-control"
@@ -167,6 +183,8 @@
               name="passwordconfirmation"
               minlength="8"
               oninvalid="this.setCustomValidity('Please repeat the same password')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'subscribe')"
               title="Please repeat the same password"
               size="8"
               required
@@ -176,16 +194,39 @@
         </div>
 
         <!--read only example-->
-        <label for="subscribe"
-          >We're sure you want to become a developer, right?</label
-        >
-        <input
-          type="text"
-          name="subscribe"
-          value="Yes"
-          readonly
-          id="subscribe"
-        />
+        <div class="row my-sm-3">
+          <div class="col-12 my-3 col-sm-4">
+            <label for="subscribe" class="form-label"
+              >We're sure you want to become a developer, right?</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              name="subscribe"
+              value="Yes"
+              readonly
+              id="subscribe"
+            />
+          </div>
+
+          <!--range example-->
+          <div class="col-12 my-3 col-sm-8">
+            <label for="level"
+              >Tell us how much do you think you know about programming in
+              general(between 0 and 100):</label
+            >
+            <input
+              type="range"
+              id="level"
+              name="level"
+              min="0"
+              max="100"
+              style="width: 100%"
+              oninput="showValue(this.value)"
+            />
+            <span id="valueDisplay"></span>
+          </div>
+        </div>
         <!--radio example-->
         <p>How did you learn about us?</p>
         <div>
@@ -216,12 +257,7 @@
             style="display: none"
           />
         </div>
-        <!--range example-->
-        <label for="level"
-          >Tell us how much do you think you know about programming in
-          general(between 0 and 100):</label
-        >
-        <input type="range" id="level" name="level" min="0" max="50" />
+
         <!--select example-->
         <label for="classes">How would you like to learn?:</label>
         <select id="classes" name="classes multiple" required>
@@ -244,11 +280,11 @@
         <!--checkbox example-->
         <p>Select all the languages you want to learn</p>
         <div>
-          <input type="checkbox" name="languages" id="javaScript" />
+          <input type="checkbox" name="languages[]" id="javaScript" />
           <label for="javaScript">JavaScript</label>
         </div>
         <div>
-          <input type="checkbox" name="languages" id="typescript" />
+          <input type="checkbox" name="languages[]" id="typescript" />
           <label for="typescript">Typescript</label>
         </div>
         <div>
@@ -367,7 +403,7 @@
         <!--date input-->
         <label for="birthday">Birthday:</label>
         <input type="date" id="birthday" name="birthday" />
-        <input type="submit" value="Submit" required />
+
         <!--month input-->
         <label for="famonth">What is your favourite month of the year?</label>
         <input type="month" id="famonth" name="famonth" />
@@ -399,10 +435,10 @@
     <script>
       // Tell us how you learnt about us:
       function toggleOtherInput() {
-        const otherCheckbox = document.getElementById("other");
+        const otherRadio = document.getElementById("other");
         const otherInput = document.getElementById("tellus");
 
-        if (otherCheckbox.checked) {
+        if (otherRadio.checked) {
           otherInput.style.display = "block";
           otherInput.required = true;
         } else {
@@ -413,9 +449,9 @@
 
       //Choose at least one language you want to learn:
 
-      const form = document.querySelectorById("student-form");
+      const studentForm = document.querySelectorById("student-form");
 
-      form.addEventListener("submit", (event) => {
+      studentForm.addEventListener("submit", (event) => {
         const checkboxes = document.querySelectorAll(
           'input[type="checkbox"][name="languages"]'
         );
@@ -431,6 +467,35 @@
           alert("Please choose at least one language.");
         }
       });
+
+      //When an input is filled in as required you can go to the next input:
+
+      function validateInput(input, nextInputId) {
+        if (input.validity.valid) {
+          document.getElementById(nextInputId).focus();
+        }
+      }
+
+      //To check the passwords are the same:
+
+      function validatePasswords() {
+        const passwordInput = document.getElementById("password");
+        const passwordConfirmationInput = document.getElementById(
+          "passwordconfirmation"
+        );
+
+        if (passwordInput.value !== passwordConfirmationInput.value) {
+          passwordConfirmationInput.setCustomValidity("Passwords do not match");
+        } else {
+          passwordConfirmationInput.setCustomValidity("");
+        }
+      }
+
+      // to show the value of the range input:
+      function showValue(value) {
+        const valueDisplay = document.getElementById("valueDisplay");
+        valueDisplay.textContent = value;
+      }
     </script>
   </body>
 </html>
