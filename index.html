@@ -192,7 +192,7 @@
             />
           </div>
         </div>
-
+        <!--3RD ROW-->
         <!--read only example-->
         <div class="row my-sm-3">
           <div class="col-12 my-3 col-sm-4">
@@ -227,56 +227,58 @@
             <span id="valueDisplay"></span>
           </div>
         </div>
-        <!--radio example-->
-        <p>How did you learn about us?</p>
-        <div>
-          <input type="radio" name="learnaboutus" id="google" />
-          <label for="google">Google</label>
-        </div>
-        <div>
-          <input type="radio" name="learnaboutus" id="socialmedia" />
-          <label for="socialmedia">Social media</label>
-        </div>
-        <div>
-          <input type="radio" name="learnaboutus" id="friends" />
-          <label for="friends">Friends</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="learnaboutus"
-            id="other"
-            onclick="toggleOtherInput()"
-          />
-          <label for="other">Other</label>
-          <input
-            type="text"
-            name="telluslearnaboutus"
-            id="tellus"
-            placeholder="Tell us how you learned about us"
-            style="display: none"
-          />
-        </div>
+        <!--4TH ROW-->
+        <div class="row my-sm-3">
+          <!--radio example-->
+          <p>How did you learn about us?</p>
+          <div>
+            <input type="radio" name="learnaboutus" id="google" />
+            <label for="google">Google</label>
+          </div>
+          <div>
+            <input type="radio" name="learnaboutus" id="socialmedia" />
+            <label for="socialmedia">Social media</label>
+          </div>
+          <div>
+            <input type="radio" name="learnaboutus" id="friends" />
+            <label for="friends">Friends</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="learnaboutus"
+              id="other"
+              onclick="toggleOtherInput()"
+            />
+            <label for="other">Other</label>
+            <input
+              type="text"
+              name="telluslearnaboutus"
+              id="tellus"
+              placeholder="Tell us how you learned about us"
+              style="display: none"
+            />
+          </div>
 
-        <!--select example-->
-        <label for="classes">How would you like to learn?:</label>
-        <select id="classes" name="classes multiple" required>
-          <option value="">Choose one option</option>
-          <option value="online">Online classes</option>
-          <option value="inpersonclasses">In-person classes</option>
-          <option value="hybrid">Hybrid classes</option>
-        </select>
-        <!--datalist example-->
-        <p>Choose a prefered browser</p>
-        <input list="browsers" name="browser" required />
-        <datalist id="browsers">
-          <option value="Microsoft Edge"></option>
-          <option value="Firefox"></option>
-          <option value="Chrome"></option>
-          <option value="Opera"></option>
-          <option value="Safari"></option>
-        </datalist>
-
+          <!--select example-->
+          <label for="classes">How would you like to learn?:</label>
+          <select id="classes" name="classes multiple" required>
+            <option value="">Choose one option</option>
+            <option value="online">Online classes</option>
+            <option value="inpersonclasses">In-person classes</option>
+            <option value="hybrid">Hybrid classes</option>
+          </select>
+          <!--datalist example-->
+          <p>Choose a prefered browser</p>
+          <input list="browsers" name="browser" required />
+          <datalist id="browsers">
+            <option value="Microsoft Edge"></option>
+            <option value="Firefox"></option>
+            <option value="Chrome"></option>
+            <option value="Opera"></option>
+            <option value="Safari"></option>
+          </datalist>
+        </div>
         <!--checkbox example-->
         <p>Select all the languages you want to learn</p>
         <div>
