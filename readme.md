@@ -10,7 +10,7 @@ I've been following the guide of [w3schools.com](https://www.w3schools.com/html/
 
 ## Bootstrap forms:
 
-underconstruction
+I've been learning how to build a form with Bootstrap following its [documentation](https://getbootstrap.com/docs/5.3/forms/overview/) about it.
 
 ## Javascript:
 

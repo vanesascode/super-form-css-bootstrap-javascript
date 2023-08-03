@@ -230,108 +230,160 @@
         <!--4TH ROW-->
         <div class="row my-sm-3">
           <!--radio example-->
-          <p>How did you learn about us?</p>
-          <div>
-            <input type="radio" name="learnaboutus" id="google" />
-            <label for="google">Google</label>
-          </div>
-          <div>
-            <input type="radio" name="learnaboutus" id="socialmedia" />
-            <label for="socialmedia">Social media</label>
-          </div>
-          <div>
-            <input type="radio" name="learnaboutus" id="friends" />
-            <label for="friends">Friends</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="learnaboutus"
-              id="other"
-              onclick="toggleOtherInput()"
-            />
-            <label for="other">Other</label>
-            <input
-              type="text"
-              name="telluslearnaboutus"
-              id="tellus"
-              placeholder="Tell us how you learned about us"
-              style="display: none"
-            />
+          <div class="col-12 my-3 col-sm-4">
+            <p class="form-label">How did you learn about us?</p>
+            <div>
+              <input
+                type="radio"
+                name="learnaboutus"
+                id="google"
+                class="form-check-input"
+              />
+              <label for="google" class="form-check-label">Google</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="learnaboutus"
+                id="socialmedia"
+                class="form-check-input"
+              />
+              <label for="socialmedia">Social media</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="learnaboutus"
+                id="friends"
+                class="form-check-input"
+              />
+              <label for="friends">Friends</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="learnaboutus"
+                id="other"
+                class="form-check-input"
+                onclick="toggleOtherInput()"
+              />
+              <label for="other" class="">Other</label>
+              <textarea
+                type="text"
+                rows="3"
+                cols="43"
+                name="telluslearnaboutus"
+                id="tellus"
+                placeholder="Tell us how you learned about us"
+                style="display: none"
+              ></textarea>
+            </div>
           </div>
 
-          <!--select example-->
-          <label for="classes">How would you like to learn?:</label>
-          <select id="classes" name="classes multiple" required>
-            <option value="">Choose one option</option>
-            <option value="online">Online classes</option>
-            <option value="inpersonclasses">In-person classes</option>
-            <option value="hybrid">Hybrid classes</option>
-          </select>
-          <!--datalist examplee-->
-          <p>Choose a prefered browser</p>
-          <input list="browsers" name="browser" required />
-          <datalist id="browsers">
-            <option value="Microsoft Edge"></option>
-            <option value="Firefox"></option>
-            <option value="Chrome"></option>
-            <option value="Opera"></option>
-            <option value="Safari"></option>
-          </datalist>
+          <!--checkbox example-->
+          <div class="col-12 my-3 col-sm-8">
+            <p>Select all the languages you want to learn</p>
+            <div class="row">
+              <div class="col-12 col-sm-3">
+                <div>
+                  <input type="checkbox" name="languages[]" id="javaScript" />
+                  <label for="javaScript">JavaScript</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages[]" id="typescript" />
+                  <label for="typescript">Typescript</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="python" />
+                  <label for="python">Python</label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-3">
+                <div>
+                  <input type="checkbox" name="languages" id="html" />
+                  <label for="html">HTML</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="css" />
+                  <label for="css">CSS</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="java" />
+                  <label for="java">Java</label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-3">
+                <div>
+                  <input type="checkbox" name="languages" id="c++" />
+                  <label for="c++">C++</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="c#" />
+                  <label for="c#">C#</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="ruby" />
+                  <label for="ruby">Ruby</label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-3">
+                <div>
+                  <input type="checkbox" name="languages" id="php" />
+                  <label for="php">PHP</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="languages" id="swift" />
+                  <label for="swift">Swift</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" name="languages" id="go" />
+                  <label for="go">Go</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--5TH ROW-->
+          <div class="row my-sm-3">
+            <!--select example-->
+            <div class="col-12 my-3 col-sm-4">
+              <label for="classes">How would you like to learn?:</label>
+              <select id="classes" name="classes multiple" required>
+                <option value="">Choose one option</option>
+                <option value="online">Online classes</option>
+                <option value="inpersonclasses">In-person classes</option>
+                <option value="hybrid">Hybrid classes</option>
+              </select>
+            </div>
+            <!--datalist examplee-->
+            <div class="col-12 my-3 col-sm-4">
+              <p>Choose a prefered browser</p>
+              <input list="browsers" name="browser" required />
+              <datalist id="browsers">
+                <option value="Microsoft Edge"></option>
+                <option value="Firefox"></option>
+                <option value="Chrome"></option>
+                <option value="Opera"></option>
+                <option value="Safari"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <!--min max attributes in dates-->
+          <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
+          <div class="col-12 my-3 col-sm-4">
+            <p>When would you like to start studying?</p>
+            <label for="datemin">Enter a date after 01-09-2023:</label>
+            <input
+              type="week"
+              id="datemin"
+              name="datemin"
+              min="2023-W35"
+              required
+            />
+          </div>
         </div>
-        <!--checkbox example-->
-        <p>Select all the languages you want to learn</p>
-        <div>
-          <input type="checkbox" name="languages[]" id="javaScript" />
-          <label for="javaScript">JavaScript</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages[]" id="typescript" />
-          <label for="typescript">Typescript</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="python" />
-          <label for="python">Python</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="html" />
-          <label for="html">HTML</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="css" />
-          <label for="css">CSS</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="java" />
-          <label for="java">Java</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="c++" />
-          <label for="c++">C++</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="c#" />
-          <label for="c#">C#</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="ruby" />
-          <label for="ruby">Ruby</label>
-        </div>
-        <div>
-          <input type="checkbox" name="languages" id="php" />
-          <label for="php">PHP</label>
-        </div>
-        <!--min max attributes in dates-->
-        <p>When would you like to start studying?</p>
-        <label for="datemin">Enter a date after 01-09-2023:</label>
-        <input
-          type="week"
-          id="datemin"
-          name="datemin"
-          min="2023-W35"
-          required
-        />
-        <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
 
         <!--numerical input-->
         <p>How many classes would you like to have per week?</p>
