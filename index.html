@@ -37,27 +37,6 @@
             class="d-inline-block align-text-top me-2"
           />Developers School</a
         >
-        <!--google search bar-->
-        <div class="d-none d-sm-block">
-          <form
-            class="d-flex"
-            action="https://www.google.com/search"
-            method="get"
-            id="student-form"
-            target="_blank"
-            role="search"
-          >
-            <input
-              type="search"
-              id="gsearch"
-              name="q"
-              class="form-control me-2"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
-        </div>
       </div>
     </nav>
 
@@ -348,8 +327,15 @@
           <div class="row my-sm-3">
             <!--select example-->
             <div class="col-12 my-3 col-sm-4">
-              <label for="classes">How would you like to learn?:</label>
-              <select id="classes" name="classes multiple" required>
+              <label for="classes" class="form-label"
+                >How would you like to learn?</label
+              >
+              <select
+                id="classes"
+                name="classes multiple"
+                required
+                class="form-select"
+              >
                 <option value="">Choose one option</option>
                 <option value="online">Online classes</option>
                 <option value="inpersonclasses">In-person classes</option>
@@ -358,8 +344,13 @@
             </div>
             <!--datalist examplee-->
             <div class="col-12 my-3 col-sm-4">
-              <p>Choose a prefered browser</p>
-              <input list="browsers" name="browser" required />
+              <p class="form-label">Click to choose a prefered browser:</p>
+              <input
+                list="browsers"
+                name="browser"
+                required
+                class="form-control"
+              />
               <datalist id="browsers">
                 <option value="Microsoft Edge"></option>
                 <option value="Firefox"></option>
@@ -368,56 +359,66 @@
                 <option value="Safari"></option>
               </datalist>
             </div>
-          </div>
-
-          <!--min max attributes in dates-->
-          <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
-          <div class="col-12 my-3 col-sm-4">
-            <p>When would you like to start studying?</p>
-            <label for="datemin">Enter a date after 01-09-2023:</label>
-            <input
-              type="week"
-              id="datemin"
-              name="datemin"
-              min="2023-W35"
-              required
-            />
+            <!--min max attributes in dates-->
+            <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
+            <div class="col-12 my-3 col-sm-4">
+              <label for="datemin" class="form-label"
+                >When would you like to start studying?</label
+              >
+              <input
+                type="week"
+                id="datemin"
+                name="datemin"
+                min="2023-W35"
+                required
+                class="form-control"
+              />
+              <div id="dateminHelp" class="form-text">
+                Enter a date after 01-09-2023
+              </div>
+            </div>
           </div>
         </div>
 
-        <!--numerical input-->
-        <p>How many classes would you like to have per week?</p>
-        <label for="quantityclasses">Quantity (between 1 and 5):</label>
-        <input
-          type="number"
-          id="quantityclasses"
-          name="quantityclasses"
-          min="1"
-          max="5"
-          required
-        />
-
-        <!--number steps min max attributes-->
-        <label for="quantity"
-          >Tell us how many hours you think you can spend every week on your
-          studying:</label
-        >
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          min="0"
-          max="100"
-          step="5"
-          value="15"
-        />
-
-        <!--time input-->
-        <label for="preferedtime"
-          >Tell us what would be the perfect time to start a class:</label
-        >
-        <input type="time" id="preferedtime" name="preferedtime" />
-
+        <!--6TH ROW-->
+        <div class="row my-sm-3">
+          <!--numerical input-->
+          <div class="col-12 my-3 col-sm-4">
+            <p>How many classes would you like to have per week?</p>
+            <label for="quantityclasses">Quantity (between 1 and 5):</label>
+            <input
+              type="number"
+              id="quantityclasses"
+              name="quantityclasses"
+              min="1"
+              max="5"
+              required
+            />
+          </div>
+          <!--number steps min max attributes-->
+          <div class="col-12 my-3 col-sm-4">
+            <label for="quantity"
+              >Tell us how many hours you think you can spend every week on your
+              studying:</label
+            >
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="0"
+              max="100"
+              step="5"
+              value="15"
+            />
+          </div>
+          <div class="col-12 my-3 col-sm-4">
+            <!--time input-->
+            <label for="preferedtime"
+              >Tell us what would be the perfect time to start a class:</label
+            >
+            <input type="time" id="preferedtime" name="preferedtime" />
+          </div>
+        </div>
         <!--Datetime-local-->
 
         <label for="interviewday"
