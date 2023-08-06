@@ -4,83 +4,49 @@ In this educational enrollement form I'm trying to include all types of inputs, 
 
 Have a look at its [PROGRESS](https://vanesascode.github.io/super-form-css-bootstrap-javascript/)
 
-## HTML forms:
-
-I've been following the guide of [w3schools.com](https://www.w3schools.com/html/html_forms.asp), which I really recommend.
-
 ## Bootstrap forms:
 
 I've been learning how to build a form with Bootstrap following its [documentation](https://getbootstrap.com/docs/5.3/forms/overview/) about it.
 
-## Javascript:
+## HTML forms:
 
-### 🔹 When we want the user to write comments if they choose a specific radio or checkbox we can take the elements from the DOM and program them:
+🔷 I've been following the guide of [w3schools.com](https://www.w3schools.com/html/html_forms.asp) for all the form input fields I used.
 
-```
-   function toggleOtherInput() {
-        const otherCheckbox = document.getElementById("other");
-        const otherInput = document.getElementById("tellus");
+🔷 I used a `title` attribute in each input field to provide a personalized tooltip or hint for each input field.
 
-        if (otherCheckbox.checked) {
-          otherInput.style.display = "block";
-          otherInput.required = true;
-        } else {
-          otherInput.style.display = "none";
-          otherInput.required = false;
-        }
-      }
-```
+🔷 I used regular expressions(RegExp) to set rules when filling in the input fields. Check [w3schools.com](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) for learning how it works. They are set in the `patter`attribute of the input fields.
 
-So, in this case, we got the radio that is called other( with the ID ) and the input we want to appear only when this radio is checked (otherwise it is invisible). Then, we make an if condition in which the text input appears and is required once the other radio is checked.
+🔷 I set a custom validation message for the input fields with the `setCustomValidity()` method in the `oninvalid` attribute which is an event handler in HTML that is triggered when a form element fails validation.
 
-### 🔹 If we want to see a particular message when the input is not correctly filled, we have this option:
+🔷 To remove the error message once the user starts correcting their input or making changes to the input field I used `setCustomValidity('')` on the `oninput` attribute, which is an event handler in HTML that is triggered when the value of an input field is changed.
 
-We set a pattern to follow, and use the oninvalid attribute in the input tag to tell you what rule it follows.
-
-```
-pattern="[a-zA-Z]+"
-oninvalid="this.setCustomValidity('Please enter only letters.')"
-oninput="this.setCustomValidity('')"
-oninput="validateInput(this, 'surname')"
-```
+I created a Javascript function called `validateInput()`, to be called on the `oninput` attribute, so once the input provided by the user meets certain criteria or requirements, the form lets you go to the next input (which is defined in the second parameter). This is the function:
 
 ```
 function validateInput(input, nextInputId) {
-        if (input.validity.valid) {
-          document.getElementById(nextInputId).focus();
-        }
-      }
-```
-
-### 🔹 Since checkbox inputs go individual and you cannot put 'required' in each of them, you can use Javascript to force the user to select at least one checkbox option:
-
-```
-const form = document.querySelectorById("student-form");
-
-form.addEventListener("submit", (event) => {
-  const checkboxes = document.querySelectorAll(
-    'input[type="checkbox"][name="languages"]'
-  );
-
-  const isChecked = Array.from(checkboxes).some(
-    (checkbox) => checkbox.checked
-  );
-
-  if (!isChecked) {
-    event.preventDefault();
-    alert("Please choose at least one language.");
+  if (input.validity.valid) {
+    document.getElementById(nextInputId).focus();
   }
-});
+}
 ```
 
-1. The code starts by selecting the form element with the id "student-form" using the querySelectorById method and assigns it to the form constant. (We could directly select the item 'form' but it is not a good idea when you have different forms in the same html file, as it is the case here)
+## Javascript:
 
-2. An event listener is added to the form using the addEventListener method. The event being listened to is the "submit" event, which is triggered when the form is submitted.
+You can check different steps for the javascript form functioning in the different files:
 
-3. Inside the event listener function, the code selects all input elements of type checkbox with the name "languages" using the querySelectorAll method and assigns them to the checkboxes constant.
+🔸 In `otherFeatures.js` you'll find the `validateInput()` function I mentioned before.
 
-4. The `Array.from` method is used to convert the `checkboxes  NodeList` into an array (The NodeList represents a live collection, meaning any changes to the DOM that affect the matched elements will automatically update the collection.).
+Also, you'll find a function called `showValue()`to make the value of the range input appear below the slider:
 
-Then, the `some  method` is called on the array to check if at least one checkbox is checked. The some method takes a callback function as an argument, which checks if the checked property of each checkbox is true. The result is assigned to the isChecked constant.
+```
+function showValue(value) {
+  const valueDisplay = document.getElementById("valueDisplay");
+  valueDisplay.textContent = value;
+}
+```
 
-5. If isChecked is false, it means no checkbox is checked. In this case, the code prevents the form from being submitted by calling the `preventDefault  method` on the event object. It also displays an alert message with the text "Please choose at least one language."
+🔸 In `radios.js` you'll find the way to make a textarea appear if the "other" radio is checked, so the user can make comments about their selection. Also, you'll see how to make the textarea disappear if one of the other radios is checked.
+
+You'll also see how to make a red message appear if none of the radios are checked and how to remove it once one of the radios is checked.
+
+🔸 In `checkboxes.js` you'll find the same as in the 'radios.js' but applied to the checkboxes.

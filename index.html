@@ -24,6 +24,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
+
   <body class="pt-5" style="font-family: 'Roboto', sans-serif">
     <!--navbar-->
     <nav class="navbar bg-light fixed-top">
@@ -68,12 +69,15 @@
         method="POST"
         autocomplete="on"
         target="_blank"
+        id="student-form"
       >
-        <!--basic info-->
         <!--1ST ROW-->
         <div class="row my-sm-3">
+          <!--Name-->
           <div class="col-12 col-sm-4 my-3">
-            <label for="name" class="form-label">Name:</label>
+            <label for="name" class="form-label" title="Please enter your name"
+              >Name:</label
+            >
             <input
               type="text"
               name="name"
@@ -88,8 +92,14 @@
               oninput="validateInput(this, 'surname')"
             />
           </div>
+          <!--Surname-->
           <div class="col-12 col-sm-4 my-3">
-            <label for="surname" class="form-label">Surname:</label>
+            <label
+              for="surname"
+              class="form-label"
+              title="Please enter your surname"
+              >Surname:</label
+            >
             <input
               type="text"
               name="surname"
@@ -102,15 +112,21 @@
               oninput="validateInput(this, 'telephone')"
             />
           </div>
+          <!--Telephone-->
           <div class="col-12 col-sm-4 my-3">
-            <label for="telephone" class="form-label">Telephone number:</label>
+            <label
+              for="telephone"
+              class="form-label"
+              title="Please enter your phone number (numbers only)"
+              >Telephone number:</label
+            >
             <input
               type="tel"
               class="form-control"
               id="telephone"
               name="telephone"
               pattern="[0-9]+"
-              title="Please enter numbers only"
+              title="Please enter your phone number (numbers only)"
               oninvalid="this.setCustomValidity('Please enter numbers only')"
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'email')"
@@ -118,8 +134,10 @@
             />
           </div>
         </div>
+
         <!--2ND ROW-->
         <div class="row my-sm-3">
+          <!--Email-->
           <div class="col-12 col-sm-4 my-3">
             <label for="email" class="form-label">Email:</label>
             <input
@@ -134,8 +152,12 @@
               class="form-control"
             />
           </div>
+          <!--Password-->
           <div class="col-12 col-sm-4 my-3">
-            <label for="password" class="form-label"
+            <label
+              for="password"
+              class="form-label"
+              title="Please enter at least 8 characters"
               >Create a password (minimum 8 characters):</label
             >
             <input
@@ -152,8 +174,13 @@
               class="form-control"
             />
           </div>
+          <!--Password confirmation-->
           <div class="col-12 col-sm-4 my-3">
-            <label for="passwordconfirmation" class="form-label">
+            <label
+              for="passwordconfirmation"
+              class="form-label"
+              title="Please repeat the same password"
+            >
               Confirm password:</label
             >
             <input
@@ -171,26 +198,32 @@
             />
           </div>
         </div>
+
         <!--3RD ROW-->
-        <!--read only example-->
         <div class="row my-sm-3">
+          <!--read only example-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="subscribe" class="form-label"
-              >We're sure you want to become a developer, right?</label
+            <label
+              for="subscribe"
+              class="form-label"
+              title="This is a mock form question that will be read only, we know you want to!"
+              >You're sure you want to become a developer, right?</label
             >
             <input
               class="form-control"
               type="text"
               name="subscribe"
-              value="Yes"
+              value="Yes!"
               readonly
               id="subscribe"
+              title="This is a mock form question that will be read only, we know you want to!"
             />
           </div>
-
           <!--range example-->
           <div class="col-12 my-3 col-sm-8">
-            <label for="level"
+            <label
+              for="level"
+              title="Please move the slider to tell us your aproximate general knowledge on programming"
               >Tell us how much do you think you know about programming in
               general(between 0 and 100):</label
             >
@@ -202,23 +235,38 @@
               max="100"
               style="width: 100%"
               oninput="showValue(this.value)"
+              required
+              title="Please move the slider to tell us your aproximate general knowledge on programming"
             />
             <span id="valueDisplay"></span>
           </div>
         </div>
+
         <!--4TH ROW-->
         <div class="row my-sm-3">
           <!--radio example-->
           <div class="col-12 my-3 col-sm-4">
-            <p class="form-label">How did you learn about us?</p>
+            <p
+              class="form-label"
+              title="Please select how you learned about us"
+            >
+              How did you learn about us?
+            </p>
             <div>
               <input
                 type="radio"
                 name="learnaboutus"
                 id="google"
                 class="form-check-input"
+                onclick="removeOtherRadioTextarea()"
+                title="Please select how you learned about us"
               />
-              <label for="google" class="form-check-label">Google</label>
+              <label
+                for="google"
+                class="form-check-label"
+                title="Please select how you learned about us"
+                >Google</label
+              >
             </div>
             <div>
               <input
@@ -226,8 +274,15 @@
                 name="learnaboutus"
                 id="socialmedia"
                 class="form-check-input"
+                onclick="removeOtherRadioTextarea()"
+                title="Please select how you learned about us"
               />
-              <label for="socialmedia">Social media</label>
+              <label
+                for="socialmedia"
+                title="Please select how you learned about us"
+                class="form-check-label"
+                >Social media</label
+              >
             </div>
             <div>
               <input
@@ -235,92 +290,265 @@
                 name="learnaboutus"
                 id="friends"
                 class="form-check-input"
+                onclick="removeOtherRadioTextarea()"
+                title="Please select how you learned about us"
               />
-              <label for="friends">Friends</label>
+              <label
+                for="friends"
+                title="Please select how you learned about us"
+                class="form-check-label"
+                >Friends</label
+              >
             </div>
             <div>
               <input
                 type="radio"
                 name="learnaboutus"
-                id="other"
+                id="other-radio-input"
                 class="form-check-input"
-                onclick="toggleOtherInput()"
+                onclick="appearOtherRadioTextarea()"
+                title="Please select how you learned about us"
               />
-              <label for="other" class="">Other</label>
+              <label
+                for="other-radio-input"
+                class="form-check-label"
+                title="Please select how you learned about us"
+                >Other</label
+              >
               <textarea
                 type="text"
                 rows="3"
-                cols="43"
-                name="telluslearnaboutus"
-                id="tellus"
+                cols="40"
+                name="telluslearnaboutus-textarea"
+                id="other-radio-textarea"
                 placeholder="Tell us how you learned about us"
                 style="display: none"
+                class="form-control"
+                title="Please select how you learned about us"
               ></textarea>
+              <div id="alert-radios"></div>
             </div>
           </div>
-
           <!--checkbox example-->
           <div class="col-12 my-3 col-sm-8">
-            <p>Select all the languages you want to learn</p>
+            <p title="Please select all the languages you want to learn">
+              Select all the languages you want to learn
+            </p>
             <div class="row">
               <div class="col-12 col-sm-3">
                 <div>
-                  <input type="checkbox" name="languages[]" id="javaScript" />
-                  <label for="javaScript">JavaScript</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="javaScript"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="javaScript"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >JavaScript</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages[]" id="typescript" />
-                  <label for="typescript">Typescript</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="typescript"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="typescript"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Typescript</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="python" />
-                  <label for="python">Python</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="python"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="python"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Python</label
+                  >
                 </div>
               </div>
               <div class="col-12 col-sm-3">
                 <div>
-                  <input type="checkbox" name="languages" id="html" />
-                  <label for="html">HTML</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="html"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="html"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >HTML</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="css" />
-                  <label for="css">CSS</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="css"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                    s
+                  />
+                  <label
+                    for="css"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >CSS</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="java" />
-                  <label for="java">Java</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="java"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="java"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Java</label
+                  >
                 </div>
               </div>
               <div class="col-12 col-sm-3">
                 <div>
-                  <input type="checkbox" name="languages" id="c++" />
-                  <label for="c++">C++</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="c++"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="c++"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >C++</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="c#" />
-                  <label for="c#">C#</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="c#"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="c#"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >C#</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="ruby" />
-                  <label for="ruby">Ruby</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="ruby"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="ruby"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Ruby</label
+                  >
                 </div>
               </div>
               <div class="col-12 col-sm-3">
                 <div>
-                  <input type="checkbox" name="languages" id="php" />
-                  <label for="php">PHP</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="php"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="php"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >PHP</label
+                  >
                 </div>
                 <div>
-                  <input type="checkbox" name="languages" id="swift" />
-                  <label for="swift">Swift</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="swift"
+                    onclick="removeOtherCheckbox()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="swift"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Swift</label
+                  >
                 </div>
 
                 <div>
-                  <input type="checkbox" name="languages" id="go" />
-                  <label for="go">Go</label>
+                  <input
+                    type="checkbox"
+                    name="languages"
+                    id="other-checkbox-input"
+                    onclick="appearOtherCheckboxTextarea()"
+                    class="form-check-input"
+                    title="Please select all the languages you want to learn"
+                  />
+                  <label
+                    for="other-checkbox-input"
+                    class="form-check-label"
+                    title="Please select all the languages you want to learn"
+                    >Others</label
+                  >
                 </div>
               </div>
             </div>
+            <textarea
+              id="other-checkbox-textarea"
+              type="text"
+              rows="3"
+              style="display: none"
+              name="telluslanguages-textarea"
+              placeholder="Tell us what other things you want to learn"
+              class="form-control mt-3"
+              title="Please select all the languages you want to learn"
+            ></textarea>
+            <div id="alert-checkboxes"></div>
           </div>
         </div>
 
@@ -328,7 +556,10 @@
         <div class="row my-sm-3">
           <!--select example-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="classes" class="form-label"
+            <label
+              for="classes"
+              class="form-label"
+              title="Choose a method to learn"
               >How would you like to learn?</label
             >
             <select
@@ -336,21 +567,39 @@
               name="classes multiple"
               required
               class="form-select"
+              oninvalid="this.setCustomValidity('Please choose one option')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'browser')"
             >
-              <option value="">Choose one option</option>
-              <option value="online">Online classes</option>
-              <option value="inpersonclasses">In-person classes</option>
-              <option value="hybrid">Hybrid classes</option>
+              <option value="" title="Choose a method to learn">
+                Choose one option
+              </option>
+              <option value="online" title="Choose a method to learn">
+                Online classes
+              </option>
+              <option value="inpersonclasses" title="Choose a method to learn">
+                In-person classes
+              </option>
+              <option value="hybrid" title="Choose a method to learn">
+                Hybrid classes
+              </option>
             </select>
           </div>
           <!--datalist examplee-->
           <div class="col-12 my-3 col-sm-4">
-            <p class="form-label">Click to choose a prefered browser:</p>
+            <p class="form-label" title="Choose a prefered browser">
+              Click to choose a prefered browser:
+            </p>
             <input
               list="browsers"
               name="browser"
               required
               class="form-control"
+              title="Choose a prefered browser"
+              id="browser"
+              oninvalid="this.setCustomValidity('Please choose an option')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'datemin')"
             />
             <datalist id="browsers">
               <option value="Microsoft Edge"></option>
@@ -363,7 +612,10 @@
           <!--min max attributes in dates-->
           <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
           <div class="col-12 my-3 col-sm-4">
-            <label for="datemin" class="form-label"
+            <label
+              for="datemin"
+              class="form-label"
+              title="Choose a week to start studying"
               >When would you like to start studying?</label
             >
             <input
@@ -373,6 +625,10 @@
               min="2023-W35"
               required
               class="form-control"
+              title="Choose a week to start studying"
+              oninvalid="this.setCustomValidity('Please choose a week')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'quantityclasses')"
             />
             <div id="dateminHelp" class="form-text">
               Enter a date after 01-09-2023
@@ -384,7 +640,10 @@
         <div class="row my-sm-3">
           <!--numerical input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="quantityclasses" class="form-label"
+            <label
+              for="quantityclasses"
+              class="form-label"
+              title="Set a number of classes you'd like to have per week"
               >How many classes would you like to have per week?</label
             >
             <input
@@ -395,6 +654,10 @@
               min="1"
               max="5"
               required
+              title="Set a number of classes you'd like to have per week"
+              oninvalid="this.setCustomValidity('Please choose a number')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'quantityhours')"
             />
             <div id="dateminHelp" class="form-text">
               Quantity (between 1 and 5)
@@ -402,23 +665,33 @@
           </div>
           <!--number steps min max attributes-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="quantity" class="form-label"
+            <label
+              for="quantity"
+              class="form-label"
+              title="Tells us how many hours you expect to be able to study every week"
               >How many hours are you going to study every week?</label
             >
             <input
               class="form-control"
               type="number"
               id="quantity"
-              name="quantity"
+              name="quantityhours"
               min="0"
               max="100"
               step="5"
               value="15"
+              title="Tells us how many hours you expect to be able to study every week"
+              oninvalid="this.setCustomValidity('Please choose a number')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'preferedtime')"
             />
           </div>
+          <!--time input-->
           <div class="col-12 my-3 col-sm-4">
-            <!--time input-->
-            <label for="preferedtime" class="form-label"
+            <label
+              for="preferedtime"
+              class="form-label"
+              title="Tells us an aprox time that would be good for you to start the classes"
               >What would be a perfect time for you to start a class?</label
             >
             <input
@@ -426,13 +699,24 @@
               id="preferedtime"
               name="preferedtime"
               class="form-control"
+              required
+              title="Tells us an aprox time that would be good for you to start the classes"
+              oninvalid="this.setCustomValidity('Please choose a time')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'interviewday')"
             />
           </div>
         </div>
-        <!--Datetime-local-->
+
+        <!--7TH ROW-->
         <div class="row my-sm-3">
+          <!--Datetime-local-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="interviewday" class="form-label"
+            <label
+              for="interviewday"
+              class="form-label"
+              title="Tell us a day and time you'd be able to have an interview with us"
+            >
               >Tell us a day and time you'd be able to have an interview with us
               before starting the classes:</label
             >
@@ -442,19 +726,35 @@
               name="interviewday"
               required
               class="form-control"
+              title="Tell us a day and time you'd be able to have an interview with us"
+              oninvalid="this.setCustomValidity('Please choose a day and time')"
+              oninput="this.setCustomValidity('')"
+              oninput="validateInput(this, 'file')"
             />
           </div>
           <!--File input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="file" class="form-label"
+            <label
+              for="file"
+              class="form-label"
+              title="Send us some previous programming certificates if you have them"
               >Send us some previous programming certificates if you have
               them:</label
             >
-            <input type="file" id="file" name="file" class="form-control" />
+            <input
+              type="file"
+              id="file"
+              name="file"
+              class="form-control"
+              title="Send us some previous programming certificates if you have them"
+            />
           </div>
           <!--URl input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="website" class="form-label"
+            <label
+              for="website"
+              class="form-label"
+              title="Add your personal website or your Linkedin if you have one:"
               >Add your personal website or your Linkedin if you have
               one:</label
             >
@@ -463,15 +763,21 @@
               id="website"
               name="website"
               class="form-control"
+              title="Add your personal website or your Linkedin if you have one:"
             />
           </div>
         </div>
 
+        <!--8TH ROW-->
         <div class="row my-sm-3">
           <!--color input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="favcolor" class="form-label"
-              >Select your favorite color:</label
+            <label
+              for="favcolor"
+              class="form-label"
+              title="Please select your favorite color if you like"
+            >
+              Click to select your favorite color if you like:</label
             >
             <input
               type="color"
@@ -479,59 +785,75 @@
               name="favcolor"
               value="#0d6efd"
               class="form-control"
+              title="Please select your favorite color"
             />
           </div>
-
           <!--date input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="birthday" class="form-label"
-              >When is your birthday?</label
+            <label
+              for="birthday"
+              class="form-label"
+              title="Please tell us your birthday if you like"
+            >
+              Tell us when is your birthday if you like</label
             >
             <input
               type="date"
               id="birthday"
               name="birthday"
               class="form-control"
+              title="Please tell us your birthday"
             />
           </div>
-
           <!--month input-->
           <div class="col-12 my-3 col-sm-4">
-            <label for="famonth" class="form-label"
-              >What is your favourite month of the year?</label
+            <label
+              for="famonth"
+              class="form-label"
+              title="What is your favourite month of the year?"
+            >
+              What is your favourite month of the year?</label
             >
             <input
               type="month"
               id="famonth"
               name="famonth"
               class="form-control"
+              title="What is your favourite month of the year?"
             />
           </div>
-
-          <!--hidden input: in case you want to keep a control of the form-->
-          <input
-            type="hidden"
-            id="from-form-best-course"
-            name="from-form-best-course"
-            value="from-form-best-course"
-          />
         </div>
 
+        <!--9TH ROW-->
         <div class="row my-sm-3">
           <!--textarea example-->
-          <div class="col-12 my-3"></div>
-          <label for="comments" class="form-label"
-            >Tell us more about you:</label
-          >
-          <textarea
-            placeholder="For example: I'm the kind of person that..."
-            name="comments"
-            id="comments"
-            required
-            class="form-control"
-            rows="5"
-          ></textarea>
+          <div class="col-12 my-3">
+            <label
+              for="comments"
+              class="form-label"
+              title="Tell us more about you"
+              >Tell us more about you:</label
+            >
+            <textarea
+              placeholder="For example: I'm the kind of person that likes..."
+              name="comments"
+              id="comments"
+              required
+              class="form-control"
+              rows="5"
+              cols="40"
+              title="Tell us more about you"
+            ></textarea>
+          </div>
         </div>
+
+        <!--hidden input: in case you want to keep a control of the form-->
+        <input
+          type="hidden"
+          id="from-form-best-course"
+          name="from-form-best-course"
+          value="from-form-best-course"
+        />
 
         <!--FormSubmit Advanced Features:-->
         <!--the thanks email the sender receives-->
@@ -542,16 +864,18 @@
         />
         <!--the style in which I see the email that formsubmit sends me-->
         <input type="hidden" name="_template" value="table" />
-        <div>
-          <div class="my-sm-3">
-            <!--button-->
-            <div class="my-5 d-flex justify-content-center gap-3 text-center">
-              <button type="submit" class="btn btn-primary btn-lg">Send</button>
-              <!--Another option:  <input type="submit" value="Submit"> -->
-              <button type="reset" class="btn btn-outline-primary btn-lg">
-                Reset
-              </button>
-            </div>
+
+        <!--BUTTONS-->
+        <div class="my-sm-3">
+          <!--button-->
+          <div class="my-5 d-flex justify-content-center gap-3 text-center">
+            <button type="submit" class="btn btn-primary btn-lg" id="send">
+              Send
+            </button>
+            <!--Another option:  <input type="submit" value="Submit"> -->
+            <button type="reset" class="btn btn-outline-primary btn-lg">
+              Reset
+            </button>
           </div>
         </div>
       </form>
@@ -567,71 +891,9 @@
       <p>Copyright &copy; 2023</p>
     </footer>
 
-    <script>
-      // Tell us how you learnt about us:
-      function toggleOtherInput() {
-        const otherRadio = document.getElementById("other");
-        const otherInput = document.getElementById("tellus");
-
-        if (otherRadio.checked) {
-          otherInput.style.display = "block";
-          otherInput.required = true;
-        } else {
-          otherInput.style.display = "none";
-          otherInput.required = false;
-        }
-      }
-
-      //Choose at least one language you want to learn:
-
-      const studentForm = document.querySelectorById("student-form");
-
-      studentForm.addEventListener("submit", (event) => {
-        const checkboxes = document.querySelectorAll(
-          'input[type="checkbox"][name="languages"]'
-        );
-
-        // Check if at least one checkbox is checked
-        const isChecked = Array.from(checkboxes).some(
-          (checkbox) => checkbox.checked
-        );
-
-        // If no checkbox is checked, prevent form submission and display an error message
-        if (!isChecked) {
-          event.preventDefault(); // Prevent form submission
-          alert("Please choose at least one language.");
-        }
-      });
-
-      //When an input is filled in as required you can go to the next input:
-
-      function validateInput(input, nextInputId) {
-        if (input.validity.valid) {
-          document.getElementById(nextInputId).focus();
-        }
-      }
-
-      //To check the passwords are the same:
-
-      function validatePasswords() {
-        const passwordInput = document.getElementById("password");
-        const passwordConfirmationInput = document.getElementById(
-          "passwordconfirmation"
-        );
-
-        if (passwordInput.value !== passwordConfirmationInput.value) {
-          passwordConfirmationInput.setCustomValidity("Passwords do not match");
-        } else {
-          passwordConfirmationInput.setCustomValidity("");
-        }
-      }
-
-      // to show the value of the range input:
-      function showValue(value) {
-        const valueDisplay = document.getElementById("valueDisplay");
-        valueDisplay.textContent = value;
-      }
-    </script>
+    <script src="radios.js"></script>
+    <script src="checkboxes.js"></script>
+    <script src="otherFeatures.js"></script>
   </body>
 </html>
 
