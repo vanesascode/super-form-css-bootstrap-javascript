@@ -11,6 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      .invalid {
+        border: solid 1px red;
+      }
+    </style>
     <!--Bootstrap-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -36,6 +41,7 @@
             width="30"
             height="24"
             class="d-inline-block align-text-top me-2"
+            id="logo"
           />Developers School</a
         >
       </div>
@@ -55,6 +61,7 @@
       <h1
         class="display-5"
         style="font-family: 'Roboto Mono', monospace; color: black"
+        id="title"
       >
         &#8249; Apply to
         <span style="color: white">Developers School</span>
@@ -82,7 +89,6 @@
               type="text"
               name="name"
               id="name"
-              required
               title="Please enter your name"
               autofocus
               class="form-control"
@@ -91,6 +97,9 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'surname')"
             />
+            <div id="alert-name" style="display: none; color: red" class="mt-1">
+              Please, enter your name.
+            </div>
           </div>
           <!--Surname-->
           <div class="col-12 col-sm-4 my-3">
@@ -102,8 +111,8 @@
             >
             <input
               type="text"
+              id="surname"
               name="surname"
-              required
               title="Please enter your surname"
               class="form-control"
               pattern="[a-zA-Z]+"
@@ -111,6 +120,13 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'telephone')"
             />
+            <div
+              id="alert-surname"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              Please, enter your surname.
+            </div>
           </div>
           <!--Telephone-->
           <div class="col-12 col-sm-4 my-3">
@@ -130,8 +146,14 @@
               oninvalid="this.setCustomValidity('Please enter numbers only')"
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'email')"
-              required
             />
+            <div
+              id="alert-telephone"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              Please, enter your phone number.
+            </div>
           </div>
         </div>
 
@@ -148,9 +170,15 @@
               oninvalid="this.setCustomValidity('Please enter a valid email address')"
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'email')"
-              required
               class="form-control"
             />
+            <div
+              id="alert-email"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              Please, enter a proper email.
+            </div>
           </div>
           <!--Password-->
           <div class="col-12 col-sm-4 my-3">
@@ -170,9 +198,15 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'passwordconfirmation')"
               title="Please enter at least 8 characters"
-              required
               class="form-control"
             />
+            <div
+              id="alert-password"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              Please, enter a password that has at least 8 characters.
+            </div>
           </div>
           <!--Password confirmation-->
           <div class="col-12 col-sm-4 my-3">
@@ -193,9 +227,15 @@
               oninput="validateInput(this, 'subscribe')"
               title="Please repeat the same password"
               size="8"
-              required
               class="form-control"
             />
+            <div
+              id="alert-passwordconfirmation"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              Please, repeat the same password.
+            </div>
           </div>
         </div>
 
@@ -204,7 +244,7 @@
           <!--read only example-->
           <div class="col-12 my-3 col-sm-4">
             <label
-              for="subscribe"
+              for="mockinput"
               class="form-label"
               title="This is a mock form question that will be read only, we know you want to!"
               >You're sure you want to become a developer, right?</label
@@ -212,12 +252,21 @@
             <input
               class="form-control"
               type="text"
-              name="subscribe"
+              name="mockinput"
               value="Yes!"
               readonly
-              id="subscribe"
+              id="mockinput"
               title="This is a mock form question that will be read only, we know you want to!"
             />
+            <div
+              id="alert-mockinput"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              This is a mock question! 😂
+              <br />
+              We know you want to become a developer!
+            </div>
           </div>
           <!--range example-->
           <div class="col-12 my-3 col-sm-8">
@@ -235,10 +284,10 @@
               max="100"
               style="width: 100%"
               oninput="showValue(this.value)"
-              required
               title="Please move the slider to tell us your aproximate general knowledge on programming"
             />
-            <span id="valueDisplay"></span>
+            <p class="form-text" style="display: inline-block">Your level:</p>
+            <span id="valueDisplay">50</span>
           </div>
         </div>
 
@@ -326,7 +375,7 @@
                 class="form-control"
                 title="Please select how you learned about us"
               ></textarea>
-              <div id="alert-radios"></div>
+              <div id="alert-radios" class="mt-1"></div>
             </div>
           </div>
           <!--checkbox example-->
@@ -548,7 +597,7 @@
               class="form-control mt-3"
               title="Please select all the languages you want to learn"
             ></textarea>
-            <div id="alert-checkboxes"></div>
+            <div id="alert-checkboxes" class="mt-1"></div>
           </div>
         </div>
 
@@ -564,8 +613,7 @@
             >
             <select
               id="classes"
-              name="classes multiple"
-              required
+              name="classes"
               class="form-select"
               oninvalid="this.setCustomValidity('Please choose one option')"
               oninput="this.setCustomValidity('')"
@@ -584,6 +632,9 @@
                 Hybrid classes
               </option>
             </select>
+            <div id="alert-classes" style="display: none; color: red">
+              Please, Choose a method to learn.
+            </div>
           </div>
           <!--datalist examplee-->
           <div class="col-12 my-3 col-sm-4">
@@ -593,7 +644,6 @@
             <input
               list="browsers"
               name="browser"
-              required
               class="form-control"
               title="Choose a prefered browser"
               id="browser"
@@ -623,7 +673,6 @@
               id="datemin"
               name="datemin"
               min="2023-W35"
-              required
               class="form-control"
               title="Choose a week to start studying"
               oninvalid="this.setCustomValidity('Please choose a week')"
@@ -653,7 +702,6 @@
               name="quantityclasses"
               min="1"
               max="5"
-              required
               title="Set a number of classes you'd like to have per week"
               oninvalid="this.setCustomValidity('Please choose a number')"
               oninput="this.setCustomValidity('')"
@@ -699,7 +747,6 @@
               id="preferedtime"
               name="preferedtime"
               class="form-control"
-              required
               title="Tells us an aprox time that would be good for you to start the classes"
               oninvalid="this.setCustomValidity('Please choose a time')"
               oninput="this.setCustomValidity('')"
@@ -724,7 +771,6 @@
               type="datetime-local"
               id="interviewday"
               name="interviewday"
-              required
               class="form-control"
               title="Tell us a day and time you'd be able to have an interview with us"
               oninvalid="this.setCustomValidity('Please choose a day and time')"
@@ -827,35 +873,25 @@
         <!--9TH ROW-->
         <div class="row my-sm-3">
           <!--textarea example-->
-          <div class="col-12 my-3">
-            <label
-              for="comments"
-              class="form-label"
-              title="Tell us more about you"
-              >Tell us more about you:</label
-            >
-            <textarea
-              placeholder="For example: I'm the kind of person that likes..."
-              name="comments"
-              id="comments"
-              required
-              class="form-control"
-              rows="5"
-              cols="40"
-              title="Tell us more about you"
-              oninvalid="this.setCustomValidity('Please give us more info about you')"
-              oninput="this.setCustomValidity('')"
-            ></textarea>
+          <div class="col-12 my-3"></div>
+          <label for="comments" class="form-label"
+            >Tell us more about you:</label
+          >
+          <textarea
+            placeholder="For example: I'm the kind of person that..."
+            name="comments"
+            id="comments"
+            class="form-control"
+            rows="5"
+          ></textarea>
+          <div
+            id="alert-comments"
+            style="display: none; color: red"
+            class="mt-1"
+          >
+            Please, tell us something about you, we are curious 😊
           </div>
         </div>
-
-        <!--hidden input: in case you want to keep a control of the form-->
-        <input
-          type="hidden"
-          id="from-form-best-course"
-          name="from-form-best-course"
-          value="from-form-best-course"
-        />
 
         <!--FormSubmit Advanced Features:-->
         <!--the thanks email the sender receives-->
@@ -893,9 +929,10 @@
       <p>Copyright &copy; 2023</p>
     </footer>
 
-    <script src="radios.js"></script>
-    <script src="checkboxes.js"></script>
-    <script src="otherFeatures.js"></script>
+    <script src="javascript-files/checkboxes.js"></script>
+    <script src="javascript-files/otherFeatures.js"></script>
+    <script src="javascript-files/radios.js"></script>
+    <script src="javascript-files/redMessages.js"></script>
   </body>
 </html>
 
