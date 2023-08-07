@@ -5,15 +5,27 @@ const otherCheckbox = document.getElementById("other-checkbox-input");
 const otherCheckboxTextarea = document.getElementById("other-checkbox-textarea");
 
 
-//To make the textarea appear if the "other" checkbox is checked:
+//To make the textarea appear if the "other" checkbox is checked and make it red if it is empty:
 function appearOtherCheckboxTextarea() {
   if (otherCheckbox.checked) {
     otherCheckboxTextarea.style.display = "block";
     otherCheckboxTextarea.required = true;
+    otherCheckboxTextarea.style.borderColor = "red";
+    otherCheckboxTextarea.addEventListener("input", handleCheckboxTextareaInput);
   } else {
     otherCheckboxTextarea.style.display = "none";
     otherCheckboxTextarea.required = false;
     otherCheckboxTextarea.value = "";
+    otherCheckboxTextarea.style.borderColor = "";
+    otherCheckboxTextarea.removeEventListener("input", handleCheckboxTextareaInput);
+  }
+}
+
+function handleCheckboxTextareaInput() {
+  if (otherCheckboxTextarea.value) {
+    otherCheckboxTextarea.style.borderColor = "";
+  } else {
+    otherCheckboxTextarea.style.borderColor = "red";
   }
 }
 

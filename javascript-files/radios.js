@@ -1,31 +1,45 @@
+
 // Store the elements outside of the functions
 const otherRadio = document.getElementById("other-radio-input");
-const otherRadioInput = document.getElementById("other-radio-textarea");
+const otherRadioTextarea = document.getElementById("other-radio-textarea");
 const socialmediaRadio = document.getElementById("socialmedia");
 const googleRadio = document.getElementById("google");
 const friendsRadio = document.getElementById("friends");
 
-// To make the textarea appear if the "other" radio is checked:
+// To make the textarea appear if the "other" radio is checked and make it red while empty:
 function appearOtherRadioTextarea() {
   if (otherRadio.checked) {
-    otherRadioInput.style.display = "block";
-    otherRadioInput.required = true;
+    otherRadioTextarea.style.display = "block";
+    otherRadioTextarea.required = true;
+    otherRadioTextarea.style.borderColor = "red";
+    otherRadioTextarea.addEventListener("input", handleRadioTextareaInput);
   } else {
-    otherRadioInput.style.display = "none";
-    otherRadioInput.required = false;
-    otherRadioInput.value = "";
+    otherRadioTextarea.style.display = "none";
+    otherRadioTextarea.required = false;
+    otherRadioTextarea.value = "";
+    otherRadioTextarea.style.borderColor = "";
+    otherRadioTextarea.removeEventListener("input", handleRadioTextareaInput);
   }
 }
+
+function handleRadioTextareaInput() {
+  if (otherRadioTextarea.value) {
+    otherRadioTextarea.style.borderColor = "";
+  } else {
+    otherRadioTextarea.style.borderColor = "red";
+  }
+}
+
 
 // To make the textarea disappear if one of the other radios is checked:
 function removeOtherRadioTextarea() {
   if (socialmediaRadio.checked || googleRadio.checked || friendsRadio.checked) {
-    otherRadioInput.style.display = "none";
-    otherRadioInput.required = false;
-    otherRadioInput.value = "";
+    otherRadioTextarea.style.display = "none";
+    otherRadioTextarea.required = false;
+    otherRadioTextarea.value = "";
   } else {
-    otherRadioInput.style.display = "block";
-    otherRadioInput.required = true;
+    otherRadioTextarea.style.display = "block";
+    otherRadioTextarea.required = true;
   }
 }
 
@@ -39,7 +53,7 @@ document.getElementById("student-form").addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent form submission
     const selectRadioDiv = document.getElementById("alert-radios");
     selectRadioDiv.textContent =
-      "Please select a study prefered method before submitting the form.";
+      "Please tell us how you learned about us before submitting the form.";
     selectRadioDiv.style.color = "red";
     const inputElement = document.getElementById("level");
     inputElement.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -56,3 +70,6 @@ document.getElementById("student-form").addEventListener("change", (event) => {
     messageDiv.textContent = "";
   }
 });
+
+
+
