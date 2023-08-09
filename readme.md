@@ -2,7 +2,9 @@
 
 In this educational enrollement form I'm trying to include all types of inputs, elements and attributes there are for forms.
 
-Have a look at its [PROGRESS](https://vanesascode.github.io/super-form-css-bootstrap-javascript/)
+Visit it [HERE](https://vanesascode.github.io/super-form-css-bootstrap-javascript/)
+
+![stage-1](https://github.com/vanesascode/super-form-css-bootstrap-javascript/assets/131259155/0afa597b-bdb4-414c-9397-ed1f2f438120)
 
 ## Bootstrap forms:
 
