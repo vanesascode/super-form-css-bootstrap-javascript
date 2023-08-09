@@ -10,13 +10,13 @@ function appearOtherCheckboxTextarea() {
   if (otherCheckbox.checked) {
     otherCheckboxTextarea.style.display = "block";
     otherCheckboxTextarea.required = true;
-    otherCheckboxTextarea.style.borderColor = "red";
+    otherCheckboxTextarea.style.border = "solid 1px red";
     otherCheckboxTextarea.addEventListener("input", handleCheckboxTextareaInput);
   } else {
     otherCheckboxTextarea.style.display = "none";
     otherCheckboxTextarea.required = false;
     otherCheckboxTextarea.value = "";
-    otherCheckboxTextarea.style.borderColor = "";
+    otherCheckboxTextarea.style.border = "";
     otherCheckboxTextarea.removeEventListener("input", handleCheckboxTextareaInput);
   }
 }
@@ -25,7 +25,7 @@ function handleCheckboxTextareaInput() {
   if (otherCheckboxTextarea.value) {
     otherCheckboxTextarea.style.borderColor = "";
   } else {
-    otherCheckboxTextarea.style.borderColor = "red";
+    otherCheckboxTextarea.style.border = "solid 1px red";
   }
 }
 

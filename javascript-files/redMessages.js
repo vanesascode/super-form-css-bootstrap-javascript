@@ -10,7 +10,7 @@ function validateInput(inputName, alertName) {
 
 
   inputElements.forEach((element) => {
-    element.style.border = isEmpty ? "solid 1px red" : "solid 1px grey";
+    element.style.border = isEmpty ? "solid 1px red" : "solid 1px rgb(214, 212, 212)";
     element.scrollIntoView({ behavior: "smooth", block: "end" });
     element.action = isEmpty ? event.preventDefault() : "";
   });
@@ -24,7 +24,7 @@ document.getElementById("student-form").addEventListener("submit", (event) => {
   validateInput("email", "alert-email");
   validateInput("password", "alert-password");
   validateInput("passwordconfirmation", "alert-passwordconfirmation");
-  // validateInput("comments", "alert-comments");
+  validateInput("comments", "alert-comments");
 });
 
 
@@ -35,7 +35,7 @@ function removeInputErrors(input, alert, regex) {
   const value = input.value.trim();
   const isValid = regex.test(value);
 
-  input.style.border = isValid ? "solid 1px grey" : "solid 1px red";
+  input.style.border = isValid ? "solid 1px rgb(214, 212, 212)" : "solid 1px red";
   alert.style.visibility = isValid ? "hidden" : "visible";
 }
 
@@ -70,24 +70,37 @@ emailInput.addEventListener("input", function (e) {
 
 const passwordInput = document.getElementById("password");
 const passwordAlert = document.getElementById("alert-password");
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 passwordInput.addEventListener("input", function (e) {
   removeInputErrors(passwordInput, passwordAlert, passwordRegex);
 });
 
-const passwordconfirmationInput = document.getElementById("passwordconfirmation");
-const passwordconfirmationAlert = document.getElementById("alert-passwordconfirmation");
-const passwordconfirmationRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-passwordconfirmationInput.addEventListener("input", function (e) {
-  removeInputErrors(passwordconfirmationInput, passwordconfirmationAlert, passwordconfirmationRegex);
-});
-
 const commentsInput = document.getElementById("comments");
 const commentsAlert = document.getElementById("alert-comments");
-const commentsRegex = /^[A-Za-z]+$/;
+const commentsRegex = /^[A-Za-z0-9]/;
 commentsInput.addEventListener("input", function (e) {
   removeInputErrors(commentsInput, commentsAlert, commentsRegex);
 });
+
+
+//Confirmation password:
+
+function removeInputErrorsConfirmationPassword(input, alert, matchInput) {
+  const value = input.value.trim();
+  const isValid = value === matchInput.value.trim();
+
+  input.style.border = isValid ? "solid 1px rgb(214, 212, 212)" : "solid 1px red";
+  alert.style.visibility = isValid ? "hidden" : "visible";
+}
+
+const passwordconfirmationInput = document.getElementById("passwordconfirmation");
+const passwordconfirmationAlert = document.getElementById("alert-passwordconfirmation");
+passwordconfirmationInput.addEventListener("input", function (e) {
+  removeInputErrorsConfirmationPassword(passwordconfirmationInput, passwordconfirmationAlert, passwordInput);
+});
+
+
+
 
 
 

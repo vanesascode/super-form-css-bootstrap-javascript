@@ -36,47 +36,23 @@ function validateInput(input, nextInputId) {
 
 You can check different steps for the javascript form functioning in the different files:
 
-### 🔸 In `otherFeatures.js` you'll find:
-
-❗❗❗ The `validateInput()` function I mentioned before. (NOT VALID ANYMORE, THE JAVASCRIPT `redMessages.js` RULES OVER THIS)
-
-✅ Also, you'll find a function called `showValue()`to make the value of the range input appear below the slider:
-
-```
-function showValue(value) {
-  const valueDisplay = document.getElementById("valueDisplay");
-  valueDisplay.textContent = value;
-}
-```
-
-✅ Also an event listener that shows a message when the readonly input is active!
-
-```
-const inputElement = document.getElementById('mockinput');
-const messageElement = document.getElementById('alert-mockinput');
-
-inputElement.addEventListener('focus', function () {
-  messageElement.style.display = 'block';
-});
-
-inputElement.addEventListener('blur', function () {
-  messageElement.style.display = 'none';
-});
-```
-
 ### 🔸 In `radios.js` you'll find:
 
 The way to make a textarea appear if the "other" radio is checked, so the user can make comments about their selection. Also, you'll see how to make the textarea disappear if one of the other radios is checked.
 
 You'll also see how to make a red message appear if none of the radios are checked and how to remove it once one of the radios is checked.
 
+---
+
 ### 🔸 In `checkboxes.js` you'll find:
 
 The same as in the 'radios.js' but applied to the checkboxes.
 
+---
+
 ### 🔸 In `redMessages.js` you'll find:
 
-The code to add a red border and alert message to the inputs of the form that are empty or that don't follow their defined RegEx pattern, with two functions:
+The code to add a red border and alert message to the text inputs of the form that are empty or that don't follow their defined RegEx pattern, with two functions:
 
 #### ☘️ validateInput(inputName, alertName)
 
@@ -169,4 +145,92 @@ The removeInputErrors function is called, passing arguments of each input. This 
 nameInput.addEventListener("input", function (e) {
   removeInputErrors(nameInput, nameAlert, nameRegex);
 });
+```
+
+👉 In order to confirm the password, I set another similar function which instead of a Regex validation, has the first password as the third argument in order to validate:
+
+```
+function removeInputErrorsConfirmationPassword(input, alert, matchInput) {
+  const value = input.value.trim();
+  const isValid = value === matchInput.value.trim();
+
+  input.style.border = isValid ? "solid 1px grey" : "solid 1px red";
+  alert.style.visibility = isValid ? "hidden" : "visible";
+}
+```
+
+---
+
+### 🔸 In `selectInputs.js` you'll find:
+
+The code to add a red border and alert message to the choose inputs of the form that are empty:
+
+First I take all inputs in a variable to be able to work with them.
+
+Then, I add an event listener to the submit button, so that if any of the inputs doesn't have a value, the border becomes red and the alert message appears:
+
+```
+  if (datalistOptions.value === "") {
+    datalistOptions.style.border = "solid 1px red";
+    datalistMessageDiv.style.display = "block";
+    event.preventDefault();
+  }
+```
+
+Then, I add an event listener to each choose input, so, in case I fill them with a value, the border and alert disappear:
+
+```
+datalistOptions.addEventListener("change", () => handleFormElementChange(datalistOptions, datalistMessageDiv));
+```
+
+The function in charge of that is this:
+
+```
+function handleFormElementChange(element, messageDiv) {
+  if (element.value !== "") {
+    element.style.border = "";
+    messageDiv.style.display = "none";
+  }
+}
+```
+
+### 🔸 In `blueMessages.js` you'll find:
+
+The code to add a fun blue message to the non-compulsary inputs of the form:
+
+First I take all inputs in a variable to be able to work with them.
+
+Then I add two event listenerers to each, a focus and a blur one:
+
+```
+inputMockElement.addEventListener('focus', handleMockInputFocus);
+inputMockElement.addEventListener('blur', handleMockInputBlur);
+```
+
+And set the functions for each:
+
+```
+
+function handleMockInputFocus() {
+  messageMockElement.style.display = 'block';
+}
+
+function handleMockInputBlur() {
+  messageMockElement.style.display = 'none';
+}
+```
+
+---
+
+### 🔸 In `otherFeatures.js` you'll find:
+
+❗❗❗ The `validateInput()` function I mentioned before. (NOT VALID ANYMORE, THE JAVASCRIPT `redMessages.js` RULES OVER THIS)
+
+✅ Also, you'll find a function called `showValue()`to make the value of the range input appear below the slider:
+
+```
+function showValue(value) {
+  const valueDisplay = document.getElementById("valueDisplay");
+  valueDisplay.textContent = value;
+}
 ```

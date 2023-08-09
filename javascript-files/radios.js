@@ -11,22 +11,22 @@ function appearOtherRadioTextarea() {
   if (otherRadio.checked) {
     otherRadioTextarea.style.display = "block";
     otherRadioTextarea.required = true;
-    otherRadioTextarea.style.borderColor = "red";
+    otherRadioTextarea.style.border = "solid 1px red";
     otherRadioTextarea.addEventListener("input", handleRadioTextareaInput);
   } else {
     otherRadioTextarea.style.display = "none";
     otherRadioTextarea.required = false;
     otherRadioTextarea.value = "";
-    otherRadioTextarea.style.borderColor = "";
+    otherRadioTextarea.style.border = "";
     otherRadioTextarea.removeEventListener("input", handleRadioTextareaInput);
   }
 }
 
 function handleRadioTextareaInput() {
   if (otherRadioTextarea.value) {
-    otherRadioTextarea.style.borderColor = "";
+    otherRadioTextarea.style.border = "";
   } else {
-    otherRadioTextarea.style.borderColor = "red";
+    otherRadioTextarea.style.border = "solid 1px red";
   }
 }
 

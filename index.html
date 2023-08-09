@@ -71,13 +71,7 @@
 
     <!--enrollment form-->
     <div class="container bg-white">
-      <form
-        action="https://formsubmit.co/your@email.com"
-        method="POST"
-        autocomplete="on"
-        target="_blank"
-        id="student-form"
-      >
+      <form action="#" method="POST" target="_blank" id="student-form">
         <!--1ST ROW-->
         <div class="row my-sm-3">
           <!--Name-->
@@ -186,7 +180,7 @@
               for="password"
               class="form-label"
               title="Please enter at least 8 characters"
-              >Create a password (minimum 8 characters):</label
+              >Create a password:</label
             >
             <input
               type="password"
@@ -205,7 +199,14 @@
               style="display: none; color: red"
               class="mt-1"
             >
-              Please, enter a password that has at least 8 characters.
+              Please, enter a password that has at least 8 characters and
+              contains at least:
+              <ul>
+                <li>one uppercase letter</li>
+                <li>one lowercase letter</li>
+                <li>one number</li>
+                <li>one special character</li>
+              </ul>
             </div>
           </div>
           <!--Password confirmation-->
@@ -622,18 +623,30 @@
               <option value="" title="Choose a method to learn">
                 Choose one option
               </option>
-              <option value="online" title="Choose a method to learn">
+              <option
+                value="online"
+                title="Choose a method to learn"
+                id="online"
+              >
                 Online classes
               </option>
-              <option value="inpersonclasses" title="Choose a method to learn">
+              <option
+                value="inperson"
+                title="Choose a method to learn"
+                id="inperson"
+              >
                 In-person classes
               </option>
-              <option value="hybrid" title="Choose a method to learn">
+              <option
+                value="hybrid"
+                title="Choose a method to learn"
+                id="hybrid"
+              >
                 Hybrid classes
               </option>
             </select>
             <div id="alert-classes" style="display: none; color: red">
-              Please, Choose a method to learn.
+              Please choose a method to learn.
             </div>
           </div>
           <!--datalist examplee-->
@@ -658,6 +671,9 @@
               <option value="Opera"></option>
               <option value="Safari"></option>
             </datalist>
+            <div id="alert-browser" style="display: none; color: red">
+              Choose a prefered browser.
+            </div>
           </div>
           <!--min max attributes in dates-->
           <!--You can also use max and min max for specific days or months e.g. min="2024-09-01" -->
@@ -670,8 +686,8 @@
             >
             <input
               type="week"
-              id="datemin"
-              name="datemin"
+              id="datestart"
+              name="datestart"
               min="2023-W35"
               class="form-control"
               title="Choose a week to start studying"
@@ -681,6 +697,9 @@
             />
             <div id="dateminHelp" class="form-text">
               Enter a date after 01-09-2023
+            </div>
+            <div id="alert-datestart" style="display: none; color: red">
+              Choose a week to start studying.
             </div>
           </div>
         </div>
@@ -710,6 +729,9 @@
             <div id="dateminHelp" class="form-text">
               Quantity (between 1 and 5)
             </div>
+            <div id="alert-quantityclasses" style="display: none; color: red">
+              Set a number of classes you'd like to have per week.
+            </div>
           </div>
           <!--number steps min max attributes-->
           <div class="col-12 my-3 col-sm-4">
@@ -722,7 +744,7 @@
             <input
               class="form-control"
               type="number"
-              id="quantity"
+              id="quantityhours"
               name="quantityhours"
               min="0"
               max="100"
@@ -733,6 +755,13 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'preferedtime')"
             />
+            <div
+              id="alert-quantityhours"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              Be realistic! 😂
+            </div>
           </div>
           <!--time input-->
           <div class="col-12 my-3 col-sm-4">
@@ -752,6 +781,10 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'interviewday')"
             />
+            <div id="alert-preferedtime" style="display: none; color: red">
+              Tells us an aprox time that would be good for you to start the
+              classes.
+            </div>
           </div>
         </div>
 
@@ -764,7 +797,7 @@
               class="form-label"
               title="Tell us a day and time you'd be able to have an interview with us"
             >
-              >Tell us a day and time you'd be able to have an interview with us
+              Tell us a day and time you'd be able to have an interview with us
               before starting the classes:</label
             >
             <input
@@ -777,6 +810,9 @@
               oninput="this.setCustomValidity('')"
               oninput="validateInput(this, 'file')"
             />
+            <div id="alert-interviewday" style="display: none; color: red">
+              Tell us a day and time you'd be able to have an interview with us.
+            </div>
           </div>
           <!--File input-->
           <div class="col-12 my-3 col-sm-4">
@@ -794,6 +830,13 @@
               class="form-control"
               title="Send us some previous programming certificates if you have them"
             />
+            <div
+              id="alert-file"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              Common, show us what you know! 😁
+            </div>
           </div>
           <!--URl input-->
           <div class="col-12 my-3 col-sm-4">
@@ -806,11 +849,18 @@
             >
             <input
               type="url"
-              id="website"
-              name="website"
+              id="linkedin"
+              name="linkedin"
               class="form-control"
               title="Add your personal website or your Linkedin if you have one:"
             />
+            <div
+              id="alert-linkedin"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              The more online you are, the better! 💪
+            </div>
           </div>
         </div>
 
@@ -833,6 +883,13 @@
               class="form-control"
               title="Please select your favorite color"
             />
+            <div
+              id="alert-favcolor"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              That's a beautiful color 🌸
+            </div>
           </div>
           <!--date input-->
           <div class="col-12 my-3 col-sm-4">
@@ -850,6 +907,13 @@
               class="form-control"
               title="Please tell us your birthday"
             />
+            <div
+              id="alert-birthday"
+              style="display: none; color: red"
+              class="mt-1"
+            >
+              We'd like to know your age.
+            </div>
           </div>
           <!--month input-->
           <div class="col-12 my-3 col-sm-4">
@@ -862,11 +926,19 @@
             >
             <input
               type="month"
-              id="famonth"
-              name="famonth"
+              id="favmonth"
+              name="favmonth"
               class="form-control"
               title="What is your favourite month of the year?"
             />
+            <div
+              id="alert-favmonth"
+              style="display: none; color: rgb(0, 102, 255)"
+              class="mt-1"
+            >
+              Winter months are the best, don't you think? more time at home
+              coding! ❄️
+            </div>
           </div>
         </div>
 
@@ -933,28 +1005,7 @@
     <script src="javascript-files/otherFeatures.js"></script>
     <script src="javascript-files/radios.js"></script>
     <script src="javascript-files/redMessages.js"></script>
+    <script src="javascript-files/selectInputs.js"></script>
+    <script src="javascript-files/blueMessages.js"></script>
   </body>
 </html>
-
-<!--
-  
-1. NAME Attribute: The "name" attribute is used to identify form input elements when submitting data to a server. It is essential for form processing on the server side. Each input element within a form should have a unique "name" attribute. When a form is submitted, the data entered in the input fields is sent to the server using the "name" attribute as the identifier. 
- 
-2. ID Attribute: The "id" attribute is used to uniquely identify an HTML element within a document. It serves as a unique identifier for the element, allowing it to be targeted and manipulated using CSS or JavaScript. Unlike the "name" attribute, the "id" attribute is not specifically related to form submission or server-side processing. 
-
-3. The VALUE attribute in HTML is used to specify the initial value or default value of an input element. It is the text or data that is pre-filled or displayed in the input field when the page loads. 
-
-4.The SIZE attribute in the HTML input element specifies the visible width of the input field in terms of the number of characters that can be displayed. It does not determine the maximum length of the input; it only affects the visual presentation. The value of the "size" attribute represents the number of characters that can be displayed horizontally in the input field. For example, if the size attribute is set to "40", the input field will be able to display 40 characters at a time.
-
-Use the size attribute in select elements to specify the number of visible values:
-
-****the default width of text input fields is 20 characters.
-
-
-The regular expression pattern  [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}  is used to validate email addresses. Here's an explanation of each part of the pattern: 
--  [a-zA-Z0-9._%+-]+ : This part matches one or more characters that can be letters (a-z, A-Z), digits (0-9), or any of the special characters  . ,  _ ,  % ,  + , or  - . This part matches the local part of the email address before the  @  symbol. 
--  @ : This part matches the  @  symbol that separates the local part from the domain part of the email address. 
--  [a-zA-Z0-9.-]+ : This part matches one or more characters that can be letters (a-z, A-Z), digits (0-9), or the special characters  . ,  - . This part matches the domain name of the email address, which can include subdomains separated by  . . 
--  \. : This part matches a literal  .  character. The backslash  \` is used to escape the  .  character, which has a special meaning in regular expressions. 
--  [a-zA-Z]{2,} : This part matches two or more characters that can be letters (a-z, A-Z). This part matches the top-level domain (TLD) of the email address, such as  .com ,  .org , or  .edu . 
--->
